@@ -8,7 +8,7 @@ RUN apt-get update && apt-get install -y git
 WORKDIR /app
 
 # Cloner le dépôt Git
-RUN git clone https://github.com/votre-utilisateur/votre-repo.git .
+RUN git clone https://github.com/2soum/ApiCrimson .
 
 # Installer les dépendances
 RUN pip install --no-cache-dir -r requirements.txt
