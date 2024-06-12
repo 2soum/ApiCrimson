@@ -13,10 +13,10 @@ ARG GITHUB_TOKEN
 # Clone the repository using the token (replace with your repository URL)
 RUN git clone https://$GITHUB_TOKEN@github.com/2soum/ApiCrimson.git .
 
-# Change the working directory to the cloned repository
+# Change the working directory to the root of the cloned repository
 WORKDIR /app/ApiCrimson
 
-# Ensure the requirements.txt is available in the cloned repository
+# List contents to debug and ensure requirements.txt is available
 RUN ls -la
 
 # Install the dependencies
