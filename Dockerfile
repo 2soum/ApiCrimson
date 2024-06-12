@@ -14,10 +14,16 @@ ARG GITHUB_TOKEN
 RUN git clone https://$GITHUB_TOKEN@github.com/2soum/ApiCrimson.git .
 
 # Change the working directory to the root of the cloned repository
-WORKDIR /app/ApiCrimson
+WORKDIR /app
 
 # List contents to debug and ensure requirements.txt is available
-RUN ls -la
+RUN echo "Contents of /app:" && ls -la
+
+# Change directory to ApiCrimson
+WORKDIR /app/ApiCrimson
+
+# List contents again to confirm presence of requirements.txt
+RUN echo "Contents of /app/ApiCrimson:" && ls -la
 
 # Install the dependencies
 RUN pip install --no-cache-dir -r requirements.txt
