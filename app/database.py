@@ -1,9 +1,14 @@
-from flask_sqlalchemy import SQLAlchemy
-from flask_migrate import Migrate
+# database.py
+import firebase_admin
+from firebase_admin import credentials, db
 
-db = SQLAlchemy()
-migrate = Migrate()
+# Fetch the service account key JSON file contents
+cred = credentials.Certificate("./serviceAccountKey.json")
 
-def init_db(app):
-    db.init_app(app)
-    migrate.init_app(app, db)
+# Initialize the app with a service account, granting admin privileges
+firebase_admin.initialize_app(cred, {
+    'databaseURL': 'https://crimsondb-27483-default-rtdb.firebaseio.com/'
+})
+
+def get_db_reference(reference_path):
+    return db.reference(reference_path)
