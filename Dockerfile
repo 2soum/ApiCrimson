@@ -19,8 +19,11 @@ RUN echo "Contents of /app:" && ls -la
 # Install the dependencies
 RUN pip install --no-cache-dir -r requirements.txt
 
+# Install gunicorn explicitly
+RUN pip install gunicorn
+
 # Expose the port the app runs on
 EXPOSE 5000
 
 # Run the application
-CMD ["gunicorn", "-b", "0.0.0.0:5000", "main:app"]
+CMD ["gunicorn", "-b", "0.0.0.0:5001", "main:app"]
