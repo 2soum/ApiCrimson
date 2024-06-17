@@ -22,8 +22,11 @@ RUN pip install --no-cache-dir -r requirements.txt
 # Install gunicorn explicitly
 RUN pip install gunicorn
 
+RUN pip install flask_cors
+
 # Expose the port the app runs on
 EXPOSE 5000
 
 # Run the application
 CMD ["gunicorn", "-b", "0.0.0.0:5001", "main:app"]
+#NEwx
